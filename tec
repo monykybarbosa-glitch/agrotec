@@ -1,0 +1,280 @@
+agro-forte/
+│
+├── index.html
+├── style.css
+├── script.js
+└── README.md
+index.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte | Futuro Sustentável</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <h1>🌱 Agro Forte</h1>
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#producao">Produção</a></li>
+            <li><a href="#ambiente">Meio Ambiente</a></li>
+            <li><a href="#impacto">Impacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero" id="inicio">
+        <h2>Agro Forte, Futuro Sustentável</h2>
+        <p>Produção agrícola eficiente com respeito ao meio ambiente.</p>
+        <button id="btnSaibaMais">Saiba Mais</button>
+    </div>
+</header>
+
+<section id="producao">
+    <h2>🚜 Produção Sustentável</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Agricultura de Precisão</h3>
+            <p>Uso de tecnologia para aumentar a produtividade e reduzir desperdícios.</p>
+        </div>
+
+        <div class="card">
+            <h3>Uso Inteligente da Água</h3>
+            <p>Sistemas modernos de irrigação garantem economia hídrica.</p>
+        </div>
+
+        <div class="card">
+            <h3>Energia Limpa</h3>
+            <p>Painéis solares e fontes renováveis reduzem impactos ambientais.</p>
+        </div>
+    </div>
+</section>
+
+<section id="ambiente">
+    <h2>🌳 Meio Ambiente</h2>
+    <p>
+        O futuro da agricultura depende do equilíbrio entre produção e conservação.
+        Preservar o solo, a água e a biodiversidade é essencial para as próximas gerações.
+    </p>
+</section>
+
+<section id="impacto">
+    <h2>📊 Nosso Impacto</h2>
+
+    <div class="contador">
+        <div>
+            <span id="hectares">0</span>
+            <p>Hectares Sustentáveis</p>
+        </div>
+
+        <div>
+            <span id="agua">0</span>
+            <p>Litros de Água Economizados</p>
+        </div>
+
+        <div>
+            <span id="arvores">0</span>
+            <p>Árvores Preservadas</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Agro Forte | Produção e Meio Ambiente</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+style.css
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4fdf4;
+    color:#333;
+}
+
+header{
+    background:linear-gradient(rgba(0,0,0,.5),
+    rgba(0,0,0,.5)),
+    url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1600');
+    background-size:cover;
+    background-position:center;
+    height:100vh;
+    color:white;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 8%;
+    align-items:center;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:20px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+.hero{
+    height:80vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h2{
+    font-size:3rem;
+}
+
+.hero p{
+    margin:20px 0;
+    font-size:1.2rem;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    background:#4CAF50;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#2e7d32;
+}
+
+section{
+    padding:80px 10%;
+    text-align:center;
+}
+
+.cards{
+    display:flex;
+    gap:25px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+
+.card{
+    width:280px;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+#ambiente{
+    background:#e8f5e9;
+}
+
+.contador{
+    display:flex;
+    justify-content:center;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+.contador span{
+    font-size:3rem;
+    color:#2e7d32;
+    font-weight:bold;
+}
+
+footer{
+    background:#1b5e20;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+script.js
+document.getElementById("btnSaibaMais").addEventListener("click", () => {
+    document.getElementById("producao").scrollIntoView({
+        behavior: "smooth"
+    });
+});
+
+function animarContador(id, valorFinal, velocidade){
+    let atual = 0;
+
+    const contador = setInterval(() => {
+        atual += Math.ceil(valorFinal / 100);
+
+        if(atual >= valorFinal){
+            atual = valorFinal;
+            clearInterval(contador);
+        }
+
+        document.getElementById(id).innerText =
+        atual.toLocaleString("pt-BR");
+    }, velocidade);
+}
+
+window.addEventListener("load", () => {
+    animarContador("hectares", 5000, 20);
+    animarContador("agua", 1200000, 10);
+    animarContador("arvores", 8500, 20);
+});
+README.md
+# 🌱 Agro Forte - Futuro Sustentável
+
+Projeto desenvolvido para promover a integração entre produção agrícola e preservação ambiental.
+
+## Objetivos
+
+- Incentivar práticas agrícolas sustentáveis.
+- Mostrar a importância da conservação ambiental.
+- Demonstrar o impacto positivo da tecnologia no agronegócio.
+
+## Tecnologias
+
+- HTML5
+- CSS3
+- JavaScript
+
+## Funcionalidades
+
+- Design responsivo
+- Contadores animados
+- Scroll suave
+- Cards interativos
+- Visual moderno
+
+## Autor
+
+Seu Nome
+Como publicar no GitHub Pages
+Envie os arquivos para o repositório.
+Vá em Settings → Pages.
+Em Source, escolha Deploy from Branch.
+Selecione main e a pasta root.
+Clique em Save.
+
+O site ficará disponível em:
+
+https://seu-usuario.github.io/nome-do-repositorio/
